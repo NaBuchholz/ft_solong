@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/03 12:24:48 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:02:25 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2 || argv == NULL)
 		return (1);
-	if (!validate_map)
+	if (!valid_map(argv[1]))
 		return (1);
 	return (0);
 }
