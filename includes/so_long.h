@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/15 13:25:43 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:56:01 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_valid_check
 	int		qnt_collectibles;
 	int		qnt_exit;
 }	t_valid_check;
+
+typedef struct s_game
+{
+	char	**map;
+	int		map_hight;
+	int		map_width;
+}	t_game;
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
