@@ -6,13 +6,13 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:06:53 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/06 11:19:08 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:50:36 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static char	*ft_strdup(const char *s1)
+static char	*strdup(const char *s1)
 {
 	char	*buffer;
 	size_t	len;
@@ -83,13 +83,13 @@ static char	*get_line(char **stash)
 	{
 		len = ft_strchr(*stash, '\n') - *stash + 1;
 		line = ft_substr(*stash, 0, len);
-		new_buffer = ft_strdup(*stash + len);
+		new_buffer = strdup(*stash + len);
 		ft_free(NULL, stash);
 		*stash = new_buffer;
 	}
 	else
 	{
-		line = ft_strdup(*stash);
+		line = strdup(*stash);
 		ft_free(NULL, stash);
 	}
 	return (line);
