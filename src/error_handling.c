@@ -6,13 +6,13 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:40:33 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/06 11:43:18 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:45:45 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	error_handling(void)
+int	error_handling(int error_code)
 {
 	write(1, "Error\n", 7);
 	return (1);

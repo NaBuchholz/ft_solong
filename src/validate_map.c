@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/20 16:54:14 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:49:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,17 @@ int	valid_map(char *map_file)
 	game.map = load_map(map_fd, &game);
 	if (!game.map)
 		return (free_map(map_fd, NULL), 1);
+	// flood fill
 	close(map_fd);
 	return (0);
 }
 
+int	flood_fill(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+
+}

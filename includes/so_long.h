@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/20 16:56:01 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:41:59 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@
 typedef struct s_valid_check
 {
 	size_t	first_line_len;
-	int		qnt_player;
-	int		qnt_collectibles;
-	int		qnt_exit;
+	size_t		qnt_player;
+	size_t		qnt_collectibles;
+	size_t		qnt_exit;
 }	t_valid_check;
 
 typedef struct s_game
 {
 	char	**map;
-	int		map_hight;
-	int		map_width;
+	size_t		map_hight;
+	size_t		map_width;
 }	t_game;
 
 size_t	ft_strlen(const char *s);
@@ -45,7 +45,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 void	free_map(int map_fd, char *line);
-int		error_handling(void);
+int		error_handling(int error_code);
 int		valid_map(char *map);
 
 
