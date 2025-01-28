@@ -6,60 +6,11 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/23 11:49:39 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:18:43 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-// static	void	initialize_valid_check(t_valid_check *valid_check)
-// {
-// 	valid_check->first_line_len = 0;
-// 	valid_check->qnt_player = 0;
-// 	valid_check->qnt_collectibles = 0;
-// 	valid_check->qnt_exit = 0;
-// }
-
-int	count_lines(int file)
-{
-	char	*line;
-	int		lines;
-
-	line = get_next_line(file);
-	lines = 0;
-	while (line)
-	{
-		free(line);
-		lines++;
-		line = get_next_line(file);
-	}
-	return (lines);
-}
-
-static char	**load_map(int map_fd, t_game *game)
-{
-	char	*line;
-	int		i;
-
-	game->map = malloc(sizeof(char *) * (game->map_hight + 1));
-	if (!game->map)
-		return (NULL);
-	line = get_next_line(map_fd);
-	i = 0;
-	while (line)
-	{
-		game->map[i] = line;
-		free(line);
-		i++;
-		line = get_next_line(map_fd);
-	}
-	game->map[i] = NULL;
-	if (game->map[0])
-		game->map_width = ft_strlen(game->map[0]);
-	else
-		game->map_width = 0;
-	return (game->map);
-}
 
 int	valid_map(char *map_file)
 {
@@ -69,21 +20,34 @@ int	valid_map(char *map_file)
 	map_fd = open(map_file, O_RDONLY);
 	if (map_fd == -1)
 		return (free_map(map_fd, NULL), 1);
-	game.map_hight = count_lines(map_fd);
+	game.map_height = count_lines(map_fd);
 	game.map = load_map(map_fd, &game);
+	//validate
 	if (!game.map)
 		return (free_map(map_fd, NULL), 1);
-	// flood fill
 	close(map_fd);
 	return (0);
 }
 
-int	flood_fill(char **map)
+// int	flood_fill(char **map)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	x = 0;
+// 	y = 0;
+
+// }
+
+void	validate_file_name(char *name)
 {
-	int	x;
-	int	y;
+	size_t	name_len;
+	size_t	ext_len;
+	size_t	comparation;
 
-	x = 0;
-	y = 0;
-
+	name_len = ft_strlen(name);
+	ext_len = ft_strlen(".ber");
+	comparation = ft_strncmp(name + name_len - ext_len, ".ber", ext_len);
+	if (name_len <= ext_len || comparation != 0)
+		exit (error_handling(1));
 }

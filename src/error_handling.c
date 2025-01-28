@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:40:33 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/28 14:00:16 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:53:14 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	error_handling(int error_code)
 	if (error_code >= 0 && error_code < 14)
 	{
 		write(1, err_msg[error_code], ft_strlen(err_msg[error_code]));
-		write(1, '\n', 1);
+		write(1, "\n", 1);
 	}
 	return (error_code);
 }
