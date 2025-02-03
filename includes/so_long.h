@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 13:42:05 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:14:07 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
@@ -38,15 +39,15 @@ typedef struct s_game
 	size_t		map_w;
 }	t_game;
 
-size_t	ft_strlen(const char *s);
 int		count_lines(int file);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(const char *s1, const char *s2);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_strjoin(const char *prefix, const char *suffix);
+void	*gnl_calloc(size_t nmemb, size_t size);
+char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
+void	close_game(int fd, char **map, int error_code);
 int		is_rectangle(t_game game);
-void	free_map(char **map, int error_code);
+void	free_map(char **map);
 void	validate_file_name(char *name);
 int		valid_chars(t_game game);
 char	**load_map(int map_fd, t_game *game);

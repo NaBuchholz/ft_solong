@@ -6,13 +6,13 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:06:53 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/20 16:50:36 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:00:31 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static char	*strdup(const char *s1)
+static char	*gnl_strdup(const char *s1)
 {
 	char	*buffer;
 	size_t	len;
@@ -54,16 +54,16 @@ static char	*read_and_stash(int fd, char *stash)
 	ssize_t	bytes_read;
 
 	if (!stash)
-		stash = ft_calloc(1, sizeof(char));
-	read_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		stash = gnl_calloc(1, sizeof(char));
+	read_buffer = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
 	bytes_read = 1;
-	while (!ft_strchr(stash, '\n') && bytes_read != 0)
+	while (!gnl_strchr(stash, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (ft_free(&read_buffer, &stash));
 		read_buffer[bytes_read] = '\0';
-		temp = ft_strjoin(stash, read_buffer);
+		temp = gnl_strjoin(stash, read_buffer);
 		ft_free(NULL, &stash);
 		stash = temp;
 	}
@@ -79,17 +79,17 @@ static char	*get_line(char **stash)
 	char	*new_buffer;
 	size_t	len;
 
-	if (ft_strchr(*stash, '\n'))
+	if (gnl_strchr(*stash, '\n'))
 	{
-		len = ft_strchr(*stash, '\n') - *stash + 1;
-		line = ft_substr(*stash, 0, len);
-		new_buffer = strdup(*stash + len);
+		len = gnl_strchr(*stash, '\n') - *stash + 1;
+		line = gnl_substr(*stash, 0, len);
+		new_buffer = gnl_strdup(*stash + len);
 		ft_free(NULL, stash);
 		*stash = new_buffer;
 	}
 	else
 	{
-		line = strdup(*stash);
+		line = gnl_strdup(*stash);
 		ft_free(NULL, stash);
 	}
 	return (line);

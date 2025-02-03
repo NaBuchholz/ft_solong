@@ -6,23 +6,13 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:06:56 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/03 13:50:23 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:59:46 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(const char *s1, int c)
+char	*gnl_strchr(const char *s1, int c)
 {
 	if (!s1)
 		return (NULL);
@@ -37,7 +27,7 @@ char	*ft_strchr(const char *s1, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(const char *prefix, const char *suffix)
+char	*gnl_strjoin(const char *prefix, const char *suffix)
 {
 	char	*str;
 	size_t	i;
@@ -58,7 +48,7 @@ char	*ft_strjoin(const char *prefix, const char *suffix)
 	return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*gnl_calloc(size_t nmemb, size_t size)
 {
 	size_t			length;
 	void			*buffer;
@@ -78,7 +68,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (buffer);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*gnl_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	size;
 	size_t	i;
@@ -88,7 +78,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (NULL);
 	size = ft_strlen(s);
 	if (start >= size)
-		return (ft_calloc(1, sizeof(char)));
+		return (gnl_calloc(1, sizeof(char)));
 	if (start + len > size)
 		len = size - start;
 	buffer = malloc(len + 1);
