@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/01/28 15:54:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:42:05 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_valid_check
 typedef struct s_game
 {
 	char		**map;
-	size_t		map_height;
-	size_t		map_width;
+	size_t		map_h;
+	size_t		map_w;
 }	t_game;
 
 size_t	ft_strlen(const char *s);
@@ -45,8 +45,10 @@ char	*ft_strjoin(const char *s1, const char *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
-void	free_map(int map_fd, char *line);
+int		is_rectangle(t_game game);
+void	free_map(char **map, int error_code);
 void	validate_file_name(char *name);
+int		valid_chars(t_game game);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
 int		valid_map(char *map);
