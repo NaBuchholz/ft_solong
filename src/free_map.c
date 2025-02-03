@@ -6,13 +6,13 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 11:43:11 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:14:01 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	free_map(char **map, int error_code)
+void	free_map(char **map)
 {
 	size_t	i;
 
@@ -26,6 +26,4 @@ void	free_map(char **map, int error_code)
 		}
 		free(map);
 	}
-	error_handling(error_code);
-	exit(error_code);
 }
