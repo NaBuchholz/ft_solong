@@ -6,15 +6,17 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/01/28 16:50:46 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/02/03 17:09:23 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = solong
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft -I./minilibx
+DEBUG_FLAGS = -g
 SRC = src/error_handling.c \
 	  src/utils_validation_map.c \
+	  src/game_utils.c \
 	  src/get_map.c \
 	  src/get_next_line/get_next_line_utils.c \
 	  src/get_next_line/get_next_line.c \
@@ -38,7 +40,7 @@ minilibx/libmlx.a:
 	@$(MAKE) -C minilibx
 
 %.o: %.c
-	@${CC} ${CFLAGS} -c $^ -o $@
+	@${CC} ${CFLAGS} ${DEBUG_FLAGS} -c $^ -o $@
 
 init-submodules:
 	@if [ ! -d "libft" ] || [ ! -f "libft/.git" ]; then \
@@ -62,6 +64,9 @@ fclean: clean
 	${RM} ${NAME}
 	@$(MAKE) -C libft fclean
 
+debug: ${NAME}
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./${NAME} ./maps/teste.ber
+
 re: fclean all
 
-.PHONY: all clean fclean re init-submodules
+.PHONY: all clean fclean re init-submodules debug
