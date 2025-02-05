@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 17:39:21 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:40:16 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	valid_map(char *map_file)
 	game.map = load_map(map_fd, &game);
 	if (!game.map)
 		close_game(map_fd, game.map, 2);
-	if (is_rectangle(game))
+	if (is_rectangle(game) || valid_chars(game))
 		close_game(map_fd, game.map, 2);
 	return (0);
 }

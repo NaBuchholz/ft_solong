@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 13:41:49 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:53:23 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	count_lines(int file)
 	return (lines);
 }
 
+static	int	is_valid_char(char c)
+{
+	return (ft_strchr("EPC10", c) != NULL);
+}
+
 int	valid_chars(t_game game)
 {
 	size_t	y;
@@ -37,9 +42,9 @@ int	valid_chars(t_game game)
 	while (y < game.map_h)
 	{
 		x = 0;
-		while (x < game.map_w)
+		while (x < game.map_w - 1)
 		{
-			if (!ft_strchr("EPC10", game.map[y][x]))
+			if (!is_valid_char(game.map[y][x]))
 				return (1);
 			x++;
 		}
@@ -56,5 +61,4 @@ int	valid_chars(t_game game)
 // int is_all_wall()
 // {
 // 	//comprimento -2 => linhas do meio => checar primeira e última posição do x
-
 // }
