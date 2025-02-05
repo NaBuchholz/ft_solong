@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 17:14:07 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:41:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		valid_chars(t_game game);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
 int		valid_map(char *map);
+void	open_screen();
 
 #endif // SO_LONG
 
