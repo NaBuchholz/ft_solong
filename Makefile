@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/02/03 17:09:23 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/02/05 15:04:30 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = solong
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft -I./minilibx
 DEBUG_FLAGS = -g
+MLX_FLAGS = -Lminilibx -lmlx -lX11 -lXext -lm
 SRC = src/error_handling.c \
 	  src/utils_validation_map.c \
 	  src/game_utils.c \
@@ -31,7 +32,7 @@ RM = rm -f
 all: init-submodules ${NAME}
 
 ${NAME}: ${OBJ} ${LIBS}
-	@${CC} ${OBJ} ${LIBS} -o ${NAME}
+	@${CC} ${OBJ} ${LIBS} ${MLX_FLAGS} -o ${NAME}
 
 libft/libft.a:
 	@$(MAKE) -C libft
@@ -40,25 +41,27 @@ minilibx/libmlx.a:
 	@$(MAKE) -C minilibx
 
 %.o: %.c
-	@${CC} ${CFLAGS} ${DEBUG_FLAGS} -c $^ -o $@
+	@${CC} ${CFLAGS} ${DEBUG_FLAGS}  -c $^ -o $@
 
 init-submodules:
 	@if [ ! -d "libft" ] || [ ! -f "libft/.git" ]; then \
-		echo "Inicializando submódulo libft..."; \
+		echo "Initializing libft submodule..."; \
 		git submodule update --init --recursive libft; \
 	else \
-		echo "Submódulo libft já está inicializado."; \
+		echo "libft submodule is already initialized."; \
 	fi
 	@if [ ! -d "minilibx" ] || [ ! -f "minilibx/.git" ]; then \
-		echo "Inicializando submódulo minilibx..."; \
+		echo "Initializing minilibx submodule..."; \
 		git submodule update --init --recursive minilibx; \
 	else \
-		echo "Submódulo minilibx já está inicializado."; \
+		echo "minilibx submodule is already initialized."; \
 	fi
 
 clean:
 	${RM} ${OBJ}
-	@for dir in $(SUB_DIRS); do $(MAKE) -C $$dir clean; done
+	@for dir in $(SUB_DIRS); do \
+		$(MAKE) -C $$dir clean; \
+	done
 
 fclean: clean
 	${RM} ${NAME}
