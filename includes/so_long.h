@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/05 13:41:39 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:02:14 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct s_valid_check
 	size_t	qnt_collectibles;
 	size_t	qnt_exit;
 }	t_valid_check;
+
+typedef struct t_classMlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+}	t_classMlx;
 
 typedef struct s_game
 {
