@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/02/05 15:04:30 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/02/07 13:58:09 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ libft/libft.a:
 	@$(MAKE) -C libft
 
 minilibx/libmlx.a:
-	@$(MAKE) -C minilibx
+	@$(MAKE) -C minilibx > /dev/null 2>/dev/null
 
 %.o: %.c
 	@${CC} ${CFLAGS} ${DEBUG_FLAGS}  -c $^ -o $@

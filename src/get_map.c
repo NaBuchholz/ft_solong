@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 16:40:57 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:49:44 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ char	**load_map(int map_fd, t_game *game)
 
 	game->map = malloc(sizeof(char *) * (game->map_h + 1));
 	line = get_next_line(map_fd);
-	if(!game->map || !line)
+	if (!game->map || !line)
 	{
 		if (!line)
-			write(1,"Sem Linha\n",11);
+			write(1, "Sem Linha\n", 11);
 		return (NULL);
 	}
 	i = 0;

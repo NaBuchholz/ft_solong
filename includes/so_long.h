@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/05 18:02:14 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:36:21 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_valid_check
 	size_t	qnt_exit;
 }	t_valid_check;
 
-typedef struct t_classMlx
+typedef struct s_classMlx
 {
 	void	*mlx;
 	void	*win;
@@ -44,6 +44,8 @@ typedef struct s_game
 	char		**map;
 	size_t		map_h;
 	size_t		map_w;
+	size_t		player_x;
+	size_t		player_y;
 }	t_game;
 
 int		count_lines(int file);
@@ -56,11 +58,11 @@ void	close_game(int fd, char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
 void	validate_file_name(char *name);
-int		valid_chars(t_game game);
+int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
 int		valid_map(char *map);
-void	open_screen();
+void	open_screen(t_game *game);
 
 #endif // SO_LONG
 
