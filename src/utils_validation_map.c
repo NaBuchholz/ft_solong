@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 16:42:52 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:46:32 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	valid_chars(t_game game, t_valid_check *check)
 		{
 			if (!is_valid_char(game.map[y][x], check))
 				return (1);
-			if (game.map[y][x] == 'P' && check->qnt_player = 1)
+			if (game.map[y][x] == 'P' && check->qnt_player == 1)
 			{
 				game.player_x = x;
 				game.player_x = y;
