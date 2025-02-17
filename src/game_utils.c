@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 13:53:22 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:54:55 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	open_screen(t_game *game)
 		exit(error_handling(0));
 	win_w = game->map_w * 32;
 	win_h = game->map_h * 32;
+	if (win_h < 1 || win_w < 1)
+		exit(error_handling(5));
 	mlx_class.win = mlx_new_window(mlx_class.mlx, win_w, win_h, "Hello world!");
 	mlx_loop(mlx_class.mlx);
 }
@@ -36,7 +38,3 @@ void	close_game(int fd, char **map, int error_code)
 		exit(error_handling(error_code));
 }
 
-void	close_mlx(void *mlx)
-{
-
-}

@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 16:47:29 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:46:52 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static	int	is_valid_char(char c, t_valid_check *check)
 
 int	valid_chars(t_game game, t_valid_check *check)
 {
-	size_t	y;
-	size_t	x;
+	int	y;
+	int	x;
 
 	y = 0;
 	check->qnt_collectibles = 0;
@@ -70,12 +70,16 @@ int	valid_chars(t_game game, t_valid_check *check)
 	return (0);
 }
 
-// int	element_blocked(char **map, size_t map_w, size_t map_h)
-// {
-// 	return (0);
-// }
-
-// int is_all_wall()
-// {
-// 	//comprimento -2 => linhas do meio => checar primeira e última posição do x
-// }
+int	flood_fill(t_game *game, int x, int y, char **visited)
+{
+	if (x < 0 || x >= game->map_w || y < 0 || y >= game->map_h)
+		return (1);
+	if (game->map[y][x] == 'E')
+		return (1);
+	if (flood_fill(game, x + 1, y, visited)
+		|| flood_fill(game, x - 1, y, visited)
+		|| flood_fill(game, x, y + 1, visited)
+		|| flood_fill(game, x, y - 1, visited))
+		return (1);
+	return (0);
+}

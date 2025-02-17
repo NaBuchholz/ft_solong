@@ -6,29 +6,28 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 14:38:06 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:02:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	valid_map(char *map_file)
+int	valid_map(char *map_file, t_game *game)
 {
 	int				map_fd;
-	t_game			game;
 	t_valid_check	check;
 
 	map_fd = open(map_file, O_RDONLY);
 	if (map_fd == -1)
 		close_game(map_fd, NULL, 5);
-	game.map_h = count_lines(map_fd);
+	game->map_h = count_lines(map_fd);
 	close_game(map_fd, NULL, -1);
 	map_fd = open(map_file, O_RDONLY);
-	game.map = load_map(map_fd, &game);
-	if (!game.map)
-		close_game(map_fd, game.map, 2);
-	if (is_rectangle(game) || valid_chars(game, &check))
-		close_game(map_fd, game.map, 2);
+	game->map = load_map(map_fd, game);
+	if (!game->map)
+		close_game(map_fd, game->map, 2);
+	if (is_rectangle(*game) || valid_chars(*game, &check))
+		close_game(map_fd, game->map, 2);
 	return (0);
 }
 
@@ -47,21 +46,21 @@ void	validate_file_name(char *name)
 
 int	is_rectangle(t_game game)
 {
-	size_t	x;
+	int	x;
 
 	if (game.map_h == game.map_w)
 		return (1);
 	x = 0;
 	while (x < game.map_h)
 	{
-		if (ft_strlen(game.map[x]) != game.map_w)
+		if ((int)ft_strlen(game.map[x]) != game.map_w)
 			return (1);
 		x++;
 	}
 	return (0);
 }
 
-void	flood_fill(t_game *game, t_valid_check *check)
+void	verify_elements(t_game *game, t_valid_check *check)
 {
 	int	x;
 	int	y;

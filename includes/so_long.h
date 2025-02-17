@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 16:36:21 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:01:30 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_valid_check
 	size_t	qnt_player;
 	size_t	qnt_collectibles;
 	size_t	qnt_exit;
+	char	**visited_map;
 }	t_valid_check;
 
 typedef struct s_classMlx
@@ -42,8 +43,8 @@ typedef struct s_classMlx
 typedef struct s_game
 {
 	char		**map;
-	size_t		map_h;
-	size_t		map_w;
+	int			map_h;
+	int			map_w;
 	size_t		player_x;
 	size_t		player_y;
 }	t_game;
@@ -58,10 +59,11 @@ void	close_game(int fd, char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
 void	validate_file_name(char *name);
+void	verify_elements(t_game *game, t_valid_check *check);
 int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
-int		valid_map(char *map);
+int		valid_map(char *map, t_game *game);
 void	open_screen(t_game *game);
 
 #endif // SO_LONG
