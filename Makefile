@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/02/07 13:58:09 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/02/17 14:43:45 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ fclean: clean
 	@$(MAKE) -C libft fclean
 
 debug: ${NAME}
-	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./${NAME} ./maps/teste.ber
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./${NAME} ./maps/control.ber
 
 re: fclean all
 

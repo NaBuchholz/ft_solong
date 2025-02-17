@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 14:06:00 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:42:26 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int	main(int argc, char **argv)
 	valid_map(argv[1], &game);
 	write(1, "Validado OK - VAMBORA!\n", 24);
 	open_screen(&game);
-	write(1, "Rodando OK - VAMBORA!\n", 24);
+	write(1, "Rodando OK - VAMBORA!\n", 23);
 	return (0);
 }

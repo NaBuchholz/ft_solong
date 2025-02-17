@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/07 11:49:44 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:40:29 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ char	**load_map(int map_fd, t_game *game)
 	game->map[i] = NULL;
 	if (game->map[0] == NULL)
 		return (NULL);
-	game->map_w = ft_strlen(game->map[0]);
+	game->map_w = (int)ft_strlen(game->map[0]);
 	return (game->map);
 }
