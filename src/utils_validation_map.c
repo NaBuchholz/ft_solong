@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 12:46:52 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:34:49 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ static	int	is_valid_char(char c, t_valid_check *check)
 	return (ft_strchr("EPC10", c) != NULL);
 }
 
+int	verify_elements(t_valid_check *check)
+{
+	if (check->qnt_collectibles == 0)
+		return (7);
+	if (check->qnt_exit == 0)
+		return (3);
+	if (check->qnt_player == 0 || check->qnt_player > 1)
+		return (13);
+	return (0);
+}
+
 int	valid_chars(t_game game, t_valid_check *check)
 {
 	int	y;
@@ -64,10 +75,7 @@ int	valid_chars(t_game game, t_valid_check *check)
 		}
 		y++;
 	}
-	if (check->qnt_collectibles == 0 || check->qnt_exit == 0
-		|| check->qnt_player == 0 || check->qnt_player > 1)
-		return (1);
-	return (0);
+	return (verify_elements(check));
 }
 
 int	flood_fill(t_game *game, int x, int y, char **visited)

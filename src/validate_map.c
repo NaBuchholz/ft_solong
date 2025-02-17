@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 15:05:10 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:36:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int	valid_map(char *map_file, t_game *game)
 	game->map = load_map(map_fd, game);
 	if (!game->map)
 		close_game(map_fd, game->map, 2);
-	if (is_rectangle(*game) || valid_chars(*game, &check))
+	if (is_rectangle(*game))
 		close_game(map_fd, game->map, 2);
-	verify_elements(game, &check);
-	if (check.qnt_collectibles < 1 || check.qnt_exit != 1
-		|| check.qnt_player != 1)
-		close_game(map_fd, game->map, 7);
+	if (valid_chars(*game, &check))
+		close_game(map_fd, game->map, valid_chars(*game, &check));
 	return (0);
 }
 
@@ -62,27 +60,4 @@ int	is_rectangle(t_game game)
 		x++;
 	}
 	return (0);
-}
-
-void	verify_elements(t_game *game, t_valid_check *check)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game-> map_h)
-	{
-		x = 0;
-		while (x < game->map_w - 1)
-		{
-			if (game->map[y][x] == 'P')
-				check->qnt_player++;
-			if (game->map[y][x] == 'E')
-				check->qnt_exit++;
-			if (game->map[y][x] == 'C')
-				check->qnt_collectibles++;
-			x++;
-		}
-		y++;
-	}
 }

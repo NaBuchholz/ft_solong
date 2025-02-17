@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 13:01:30 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:15:40 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	close_game(int fd, char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
 void	validate_file_name(char *name);
-void	verify_elements(t_game *game, t_valid_check *check);
+int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
