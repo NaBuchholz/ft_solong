@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 13:02:39 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:05:10 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	valid_map(char *map_file, t_game *game)
 		close_game(map_fd, game->map, 2);
 	if (is_rectangle(*game) || valid_chars(*game, &check))
 		close_game(map_fd, game->map, 2);
+	verify_elements(game, &check);
+	if (check.qnt_collectibles < 1 || check.qnt_exit != 1
+		|| check.qnt_player != 1)
+		close_game(map_fd, game->map, 7);
 	return (0);
 }
 
