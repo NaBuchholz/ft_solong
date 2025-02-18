@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 15:15:40 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:59:58 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,14 @@ typedef struct s_classMlx
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
+	int	*wall;
+	void	*bg;
+	void	*char_up;
+	void	*char_still;
+	void	*char_left;
+	void	*char_right;
+	void	*collectable;
+	void	*exit;
 }	t_classMlx;
 
 typedef struct s_game
