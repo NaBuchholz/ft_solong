@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/19 21:27:44 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/19 23:41:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	initialize_sprites(t_classMlx *mlx)
 	char	*wall;
 
 	px = 32;
-	bg = "../assets/bg.xpm";
-	char_still = "../assets/char_still.xpm";
-	collectable = "../assets/collectable.xpm";
-	exit = "../assets/exit.xpm";
-	wall = "../assets/bg.xpm";
+	bg = "./assets/bg.xpm";
+	char_still = "./assets/player_still.xpm";
+	collectable = "./assets/collectible.xpm";
+	exit = "./assets/exit.xpm";
+	wall = "./assets/bg.xpm";
 	mlx->bg = mlx_xpm_file_to_image(mlx->mlx, bg, &px, &px);
 	mlx->char_still = mlx_xpm_file_to_image(mlx->mlx, char_still, &px, &px);
 	mlx->collectable = mlx_xpm_file_to_image(mlx->mlx, collectable, &px, &px);
