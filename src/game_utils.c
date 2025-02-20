@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/19 23:41:39 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/20 01:28:35 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	open_screen(t_game *game)
 	mlx_class.win = mlx_new_window(mlx_class.mlx, win_w, win_h, "Hello world!");
 	initialize_sprites(&mlx_class);
 	put_map(game, &mlx_class);
+	mlx_key_hook(mlx_class.win, key_handle, &mlx_class);
+	mlx_hook(mlx_class.win, 17, 0, mouse_handle, &mlx_class);
 	mlx_loop(mlx_class.mlx);
 }
 

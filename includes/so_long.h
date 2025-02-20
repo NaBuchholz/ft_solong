@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/18 14:59:58 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/20 01:29:51 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
 int		valid_map(char *map, t_game *game);
 void	open_screen(t_game *game);
+int		key_handle(int keycode);
+int		mouse_handle(t_classMlx *mlx);
 
 #endif // SO_LONG
 
