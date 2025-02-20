@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 14:42:26 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/20 03:05:45 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,26 @@ int	main(int argc, char **argv)
 	open_screen(&game);
 	write(1, "Rodando OK - VAMBORA!\n", 23);
 	return (0);
+}
+
+void	end_game(int error_code)
+{
+
+
+}
+
+void	free_game_resources(t_env *env)
+{
+	if (env->mlx.win)
+	{
+		mlx_destroy_window(env->mlx.mlx, env->mlx.win);
+		env->mlx.win = NULL;
+	}
+	if (env->game.map)
+		free_map(env->game.map);
+	if (env->mlx.mlx)
+	{
+		free(env->mlx.mlx);
+		env->mlx.mlx = NULL;
+	}
 }

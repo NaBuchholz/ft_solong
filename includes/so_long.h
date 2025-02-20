@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/20 01:29:51 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/20 03:11:52 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,9 @@ typedef struct s_classMlx
 {
 	void	*mlx;
 	void	*win;
-	int	*wall;
+	int		*wall;
 	void	*bg;
-	void	*char_up;
 	void	*char_still;
-	void	*char_left;
-	void	*char_right;
 	void	*collectable;
 	void	*exit;
 }	t_classMlx;
@@ -55,6 +52,14 @@ typedef struct s_game
 	size_t		player_x;
 	size_t		player_y;
 }	t_game;
+
+typedef struct s_env
+{
+	t_game		game;
+	t_classMlx	mlx;
+	int			fd;
+}	t_env;
+
 
 int		count_lines(int file);
 char	*gnl_strchr(const char *s, int c);

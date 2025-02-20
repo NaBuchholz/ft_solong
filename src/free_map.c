@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/03 17:14:01 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/02/20 03:02:14 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_map(char **map)
 {
-	size_t	i;
+	int	i;
 
 	if (map)
 	{
@@ -25,5 +25,6 @@ void	free_map(char **map)
 			i++;
 		}
 		free(map);
+		map = NULL;
 	}
 }
