@@ -17,7 +17,7 @@ int	error_handling(int error_code)
 	char	*err_msg[14];
 
 	err_msg[0] = "Undetected Error =/";
-	err_msg[1] = "The scroll lacks the '.beer' rune. Not allowed. ";
+	err_msg[1] = "The scroll lacks the '.ber' rune. Not allowed. ";
 	err_msg[2] = "The map layout is cursed and invalid.";
 	err_msg[3] = "The exit is unreachable. No valid path exists.";
 	err_msg[4] = "You tried to access lands beyond the known plane ";

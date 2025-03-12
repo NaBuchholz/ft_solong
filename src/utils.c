@@ -15,7 +15,7 @@
 int	key_handle(int keycode)
 {
 	if (keycode == 65307)
-		exit(0);
+		close_game()
 	return (0);
 }
 

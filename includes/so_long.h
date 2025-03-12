@@ -28,7 +28,7 @@ typedef struct s_valid_check
 {
 	size_t	first_line_len;
 	size_t	qnt_player;
-	size_t	qnt_collectibles;
+	size_t	qnt_collectables;
 	size_t	qnt_exit;
 	char	**visited_map;
 }	t_valid_check;
@@ -37,10 +37,10 @@ typedef struct s_classMlx
 {
 	void	*mlx;
 	void	*win;
-	int		*wall;
+	void	*wall;
 	void	*bg;
 	void	*char_still;
-	void	*collectable;
+	void	*collectables;
 	void	*exit;
 }	t_classMlx;
 
@@ -57,6 +57,7 @@ typedef struct s_env
 {
 	t_game		game;
 	t_classMlx	mlx;
+	t_valid_check	valid;
 	int			fd;
 }	t_env;
 
@@ -70,7 +71,7 @@ char	*get_next_line(int fd);
 void	close_game(int fd, char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
-void	validate_file_name(char *name);
+int		validate_file_name(char *name);
 int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(int map_fd, t_game *game);

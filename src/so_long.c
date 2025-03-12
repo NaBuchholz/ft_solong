@@ -12,24 +12,41 @@
 
 #include "../includes/so_long.h"
 
-static t_game	initialize_game(t_game *game)
+void	init_counters(t_env *envGame)
 {
-	game->map_h = 0;
-	game->map_w = 0;
-	game->player_x = 0;
-	game->player_y = 0;
-	game->map = NULL;
+	envGame->game->map_h = 0;
+	envGame->game->map_w = 0;
+	envGame->game->player_x = 0;
+	envGame->game->player_y = 0;
+	envGame->classMlx->collectables = NULL;
+	envGame->classMlx->exit = NULL;
+	envGame->classMlx->char_still = NULL;
+	envGame->classMlx->wall = NULL;
+	envGame->classMlx->win = NULL;
+	envGame->classMlx->mlx = NULL;
+	envGame->classMlx->bg = NULL;
+	envGame->valid->qnt_player = NULL;
+	envGame->valid->qnt_collectables = 0;
+	envGame->valid->qnt_exit = 0;
+	envGame->valid->first_line_len = 0;
+}
 
-	return (*game);
+static int	initialize_game(t_env *envGame)
+{
+	init_counters();
+	envGame->game->map = load_map()
+
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_env	envGame;
 
 	if (argc != 2 || argv == NULL)
-		return (1);
-	validate_file_name(argv[1]);
+		return (ft_putendl_fd_1("use ./so_long map.ber", 2));
+	if (!validate_file_name(argv[1]))
+		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune. Not allowed.", 2));
 	game = initialize_game(&game);
 	valid_map(argv[1], &game);
 	write(1, "Validado OK - VAMBORA!\n", 24);

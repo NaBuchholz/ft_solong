@@ -33,7 +33,7 @@ int	valid_map(char *map_file, t_game *game)
 	return (0);
 }
 
-void	validate_file_name(char *name)
+int	validate_file_name(char *name)
 {
 	size_t	name_len;
 	size_t	ext_len;
@@ -43,7 +43,8 @@ void	validate_file_name(char *name)
 	ext_len = ft_strlen(".ber");
 	comparation = ft_strncmp(name + name_len - ext_len, ".ber", ext_len);
 	if (name_len <= ext_len || comparation != 0)
-		exit (error_handling(1));
+		return (0);
+	return (1);
 }
 
 int	is_rectangle(t_game game)
