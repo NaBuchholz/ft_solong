@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/17 15:34:49 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:20:04 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static	int	is_valid_char(char c, t_valid_check *check)
 	if (c == 'E')
 		check->qnt_exit++;
 	if (c == 'C')
-		check->qnt_collectibles++;
+		check->qnt_collectables++;
 	return (ft_strchr("EPC10", c) != NULL);
 }
 
 int	verify_elements(t_valid_check *check)
 {
-	if (check->qnt_collectibles == 0)
+	if (check->qnt_collectables == 0)
 		return (7);
 	if (check->qnt_exit == 0)
 		return (3);
@@ -56,7 +56,7 @@ int	valid_chars(t_game game, t_valid_check *check)
 	int	x;
 
 	y = 0;
-	check->qnt_collectibles = 0;
+	check->qnt_collectables = 0;
 	check->qnt_exit = 0;
 	check->qnt_player = 0;
 	while (y < game.map_h)

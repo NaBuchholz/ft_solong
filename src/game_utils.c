@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/20 01:28:35 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:21:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ void	initialize_sprites(t_classMlx *mlx)
 	int		px;
 	char	*bg;
 	char	*char_still;
-	char	*collectable;
+	char	*collectables;
 	char	*exit;
 	char	*wall;
 
 	px = 32;
 	bg = "./assets/bg.xpm";
 	char_still = "./assets/player_still.xpm";
-	collectable = "./assets/collectible.xpm";
+	collectables = "./assets/collectible.xpm";
 	exit = "./assets/exit.xpm";
 	wall = "./assets/bg.xpm";
 	mlx->bg = mlx_xpm_file_to_image(mlx->mlx, bg, &px, &px);
 	mlx->char_still = mlx_xpm_file_to_image(mlx->mlx, char_still, &px, &px);
-	mlx->collectable = mlx_xpm_file_to_image(mlx->mlx, collectable, &px, &px);
+	mlx->collectables = mlx_xpm_file_to_image(mlx->mlx, collectables, &px, &px);
 	mlx->exit = mlx_xpm_file_to_image(mlx->mlx, exit, &px, &px);
 	mlx->wall = mlx_xpm_file_to_image(mlx->mlx, wall, &px, &px);
 }
@@ -59,7 +59,7 @@ static void	put_map(t_game *game, t_classMlx *mlx)
 			else if (game->map[y][x] == 'E')
 				put_image(mlx, mlx->exit, x, y);
 			else if (game->map[y][x] == 'C')
-				put_image(mlx, mlx->collectable, x, y);
+				put_image(mlx, mlx->collectables, x, y);
 			x++;
 		}
 		y++;
