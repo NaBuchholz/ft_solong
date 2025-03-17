@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/02/20 01:02:25 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/17 15:52:41 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,18 +45,16 @@ minilibx/libmlx.a:
 	@${CC} ${CFLAGS} ${DEBUG_FLAGS}  -c $^ -o $@
 
 init-submodules:
-	@if [ ! -d "libft" ] || [ ! -f "libft/.git" ]; then \
-		echo "Initializing libft submodule..."; \
-		git submodule update --init --recursive libft; \
-	else \
-		echo "libft submodule is already initialized."; \
-	fi
-	@if [ ! -d "minilibx" ] || [ ! -f "minilibx/.git" ]; then \
-		echo "Initializing minilibx submodule..."; \
-		git submodule update --init --recursive minilibx; \
-	else \
-		echo "minilibx submodule is already initialized."; \
-	fi
+	@for submodule in $(SUB_DIRS); do \
+		if [ ! -d "$$submodule" ] || [ ! -f "$$submodule/.git" ]; then \
+			echo "Initializing $$submodule submodule..."; \
+			git submodule update --init --recursive $$submodule; \
+		else \
+			echo "Updating $$submodule submodule..."; \
+			BRANCH=$$(git config -f .gitmodules --get submodule.$$submodule.branch || echo "master"); \
+			cd $$submodule && git checkout $$BRANCH && git pull origin $$BRANCH && cd ..; \
+		fi; \
+	done
 
 clean:
 	${RM} ${OBJ}

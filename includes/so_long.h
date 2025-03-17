@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/20 03:11:52 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:08:15 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ typedef struct s_game
 	int			map_w;
 	size_t		player_x;
 	size_t		player_y;
+	int			moves;
 }	t_game;
 
 typedef struct s_env
 {
-	t_game		game;
-	t_classMlx	mlx;
+	t_game			game;
+	t_classMlx		mlx;
 	t_valid_check	valid;
-	int			fd;
+	int				fd;
 }	t_env;
 
 
@@ -68,7 +69,7 @@ char	*gnl_strjoin(const char *prefix, const char *suffix);
 void	*gnl_calloc(size_t nmemb, size_t size);
 char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
-void	close_game(int fd, char **map, int error_code);
+void	close_game(char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
 int		validate_file_name(char *name);
@@ -76,9 +77,9 @@ int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(int map_fd, t_game *game);
 int		error_handling(int error_code);
-int		valid_map(char *map, t_game *game);
+void	valid_map(char *map_file, t_env *envGame);
 void	open_screen(t_game *game);
-int		key_handle(int keycode);
+int		handle_key(int keycode, t_game *game);
 int		mouse_handle(t_classMlx *mlx);
 
 #endif // SO_LONG

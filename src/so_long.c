@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/02/20 03:05:45 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:09:02 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 void	init_counters(t_env *envGame)
 {
-	envGame->game->map_h = 0;
-	envGame->game->map_w = 0;
-	envGame->game->player_x = 0;
-	envGame->game->player_y = 0;
-	envGame->classMlx->collectables = NULL;
-	envGame->classMlx->exit = NULL;
-	envGame->classMlx->char_still = NULL;
-	envGame->classMlx->wall = NULL;
-	envGame->classMlx->win = NULL;
-	envGame->classMlx->mlx = NULL;
-	envGame->classMlx->bg = NULL;
-	envGame->valid->qnt_player = NULL;
-	envGame->valid->qnt_collectables = 0;
-	envGame->valid->qnt_exit = 0;
-	envGame->valid->first_line_len = 0;
+	envGame->game.map_h = 0;
+	envGame->game.map_w = 0;
+	envGame->game.player_x = 0;
+	envGame->game.player_y = 0;
+	envGame->mlx.collectables = NULL;
+	envGame->mlx.exit = NULL;
+	envGame->mlx.char_still = NULL;
+	envGame->mlx.wall = NULL;
+	envGame->mlx.win = NULL;
+	envGame->mlx.mlx = NULL;
+	envGame->mlx.bg = NULL;
+	envGame->valid.qnt_player = NULL;
+	envGame->valid.qnt_collectables = 0;
+	envGame->valid.qnt_exit = 0;
+	envGame->valid.first_line_len = 0;
 }
 
 static int	initialize_game(t_env *envGame)
 {
-	init_counters();
-	envGame->game->map = load_map()
-
+	init_counters(&envGame);
+	envGame->game.map = load_map(envGame->fd, &envGame->game);
 	return (1);
 }
 
@@ -46,11 +45,11 @@ int	main(int argc, char **argv)
 	if (argc != 2 || argv == NULL)
 		return (ft_putendl_fd_1("use ./so_long map.ber", 2));
 	if (!validate_file_name(argv[1]))
-		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune. Not allowed.", 2));
-	game = initialize_game(&game);
-	valid_map(argv[1], &game);
+		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune.", 2));
+	initialize_game(&envGame);
+	valid_map(argv[1], &envGame);
 	write(1, "Validado OK - VAMBORA!\n", 24);
-	open_screen(&game);
+	open_screen(&envGame);
 	write(1, "Rodando OK - VAMBORA!\n", 23);
 	return (0);
 }
