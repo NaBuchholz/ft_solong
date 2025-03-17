@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/03/17 15:52:41 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/17 17:32:02 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,13 @@ SRC = src/error_handling.c \
 OBJ = ${SRC:.c=.o}
 SUB_DIRS = libft minilibx
 LIBS = libft/libft.a minilibx/libmlx.a
+PRINTF_LIB = libft/printf/libftprintf.a
 RM = rm -f
 
 all: init-submodules ${NAME}
 
 ${NAME}: ${OBJ} ${LIBS}
-	@${CC} ${OBJ} ${LIBS} ${MLX_FLAGS} -o ${NAME}
+	@${CC} ${OBJ} ${LIBS} ${RINTF_LIB} ${MLX_FLAGS} -o ${NAME}
 
 libft/libft.a:
 	@$(MAKE) -C libft
@@ -42,7 +43,7 @@ minilibx/libmlx.a:
 	@$(MAKE) -C minilibx > /dev/null 2>/dev/null
 
 %.o: %.c
-	@${CC} ${CFLAGS} ${DEBUG_FLAGS}  -c $^ -o $@
+	@${CC} ${CFLAGS} ${DEBUG_FLAGS} -c $^ -o $@
 
 init-submodules:
 	@for submodule in $(SUB_DIRS); do \
