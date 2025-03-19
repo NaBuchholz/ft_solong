@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/17 17:23:53 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:51:26 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_counters(t_env *envGame)
 	envGame->game.map_w = 0;
 	envGame->game.player_x = 0;
 	envGame->game.player_y = 0;
+	envGame->game.moves = 0;
+	envGame->game.map = NULL;
 	envGame->mlx.collectables = NULL;
 	envGame->mlx.exit = NULL;
 	envGame->mlx.char_still = NULL;
@@ -31,10 +33,20 @@ void	init_counters(t_env *envGame)
 	envGame->valid.first_line_len = 0;
 }
 
-static int	initialize_game(t_env *envGame)
+static int	initialize_game(char *file_name, t_env *envGame)
 {
 	init_counters(envGame);
-	envGame->game.map = load_map(envGame->fd, &envGame->game);
+	envGame->fd = open(file_name, O_RDONLY);
+	envGame->game.map_h = count_lines(envGame->fd);
+	envGame->fd = open(file_name, O_RDONLY);
+	if (envGame->fd < 0)
+	{
+		ft_printf("Error: Failed to reopen file.\n");
+		return (0);
+	}
+	envGame->game.map = load_map(envGame);
+	close(envGame->fd);
+	envGame->fd = 0;
 	return (1);
 }
 
@@ -43,11 +55,11 @@ int	main(int argc, char **argv)
 	t_env	envGame;
 
 	if (argc != 2 || argv == NULL)
-		return (ft_putendl_fd_1("use ./so_long map.ber", 2));
+		return (ft_putendl_fd_1("use \"./so_long map.ber \"", 2));
 	if (!validate_file_name(argv[1]))
 		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune.", 2));
-	initialize_game(&envGame);
-	valid_map(argv[1], &envGame);
+	initialize_game(argv[1],&envGame);
+	valid_map(&envGame);
 	write(1, "Validado OK - VAMBORA!\n", 24);
 	open_screen(&envGame.game);
 	write(1, "Rodando OK - VAMBORA!\n", 23);

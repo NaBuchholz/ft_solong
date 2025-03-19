@@ -6,28 +6,20 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/17 14:10:27 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:52:16 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	valid_map(char *map_file, t_env *envGame)
+void	valid_map(t_env *envGame)
 {
-
-	envGame->fd = open(map_file, O_RDONLY);
-	if (envGame->fd == -1)
-		exit(2);
-	envGame->game.map_h = count_lines(envGame->fd);
-	close_game(envGame->game.map, -1);
-	envGame->fd = open(map_file, O_RDONLY);
-	envGame->game.map = load_map(envGame->fd, &envGame->game);
 	if (!envGame->game.map)
 		close_game(envGame->game.map, 2);
 	if (is_rectangle(envGame->game))
 		close_game(envGame->game.map, 2);
 	if (valid_chars(envGame->game, &envGame->valid))
-		close_game(envGame->game.map, valid_chars(envGame->game, &envGame->valid));
+		close_game(envGame->game.map, 5);
 }
 
 int	validate_file_name(char *name)
@@ -53,7 +45,7 @@ int	is_rectangle(t_game game)
 	x = 0;
 	while (x < game.map_h)
 	{
-		if ((int)ft_strlen(game.map[x]) != game.map_w)
+		if ((int)ft_strlen(game.map[x]) - 1 != game.map_w)
 			return (1);
 		x++;
 	}

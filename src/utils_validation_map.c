@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/13 17:12:23 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:33:15 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int	count_lines(int file)
 		lines++;
 		line = get_next_line(file);
 	}
+	if (lines == 0)
+	{
+		ft_printf("No lines found in the file.\n");
+		return (-1);
+	}
+	close(file);
 	return (lines);
 }
 
@@ -56,9 +62,6 @@ int	valid_chars(t_game game, t_valid_check *check)
 	int	x;
 
 	y = 0;
-	check->qnt_collectables = 0;
-	check->qnt_exit = 0;
-	check->qnt_player = 0;
 	while (y < game.map_h)
 	{
 		x = 0;
