@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/19 13:51:26 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:20:57 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,13 @@ int	main(int argc, char **argv)
 		return (ft_putendl_fd_1("use \"./so_long map.ber \"", 2));
 	if (!validate_file_name(argv[1]))
 		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune.", 2));
-	initialize_game(argv[1],&envGame);
+	initialize_game(argv[1], &envGame);
 	valid_map(&envGame);
 	write(1, "Validado OK - VAMBORA!\n", 24);
-	open_screen(&envGame.game);
+	open_screen(&envGame);
 	write(1, "Rodando OK - VAMBORA!\n", 23);
 	return (0);
 }
-
-// void	end_game(int error_code)
-// {
-
-
-// }
 
 void	free_game_resources(t_env *env)
 {

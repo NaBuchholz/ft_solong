@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/19 13:41:31 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:13:01 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_game
 	char		**map;
 	int			map_h;
 	int			map_w;
-	size_t		player_x;
-	size_t		player_y;
+	int			player_x;
+	int			player_y;
 	int			moves;
 }	t_game;
 
@@ -72,14 +72,16 @@ char	*get_next_line(int fd);
 void	close_game(char **map, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
+void	put_map(t_game *game, t_classMlx *mlx);
 int		validate_file_name(char *name);
 int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game game, t_valid_check *check);
 char	**load_map(t_env *envGame);
 int		error_handling(int error_code);
 void	valid_map(t_env *envGame);
-void	open_screen(t_game *game);
-int		handle_key(int keycode, t_game *game);
+void	update_map(t_env *envGame, int new_x, int new_y);
+void	open_screen(t_env *envGame);
+int		handle_key(int keycode, t_env *envGame);
 int		mouse_handle(t_classMlx *mlx);
 
 #endif // SO_LONG

@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/19 11:06:23 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:19:13 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	put_image(t_classMlx *mlx, void *img, int x, int y)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img, x * 32, y * 32);
 }
 
-static void	put_map(t_game *game, t_classMlx *mlx)
+void	put_map(t_game *game, t_classMlx *mlx)
 {
 	int	x;
 	int	y;
@@ -66,25 +66,24 @@ static void	put_map(t_game *game, t_classMlx *mlx)
 	}
 }
 
-void	open_screen(t_game *game)
+void	open_screen(t_env *envGame)
 {
-	t_classMlx	mlx_class;
 	int			win_w;
 	int			win_h;
 
-	mlx_class.mlx = mlx_init();
-	if (mlx_class.mlx == NULL)
+	envGame->mlx.mlx = mlx_init();
+	if (envGame->mlx.mlx == NULL)
 		exit(error_handling(0));
-	win_w = game->map_w * 32;
-	win_h = game->map_h * 32;
+	win_w = envGame->game.map_w * 32;
+	win_h = envGame->game.map_h * 32;
 	if (win_h < 1 || win_w < 1)
 		exit(error_handling(5));
-	mlx_class.win = mlx_new_window(mlx_class.mlx, win_w, win_h, "Hello world!");
-	initialize_sprites(&mlx_class);
-	put_map(game, &mlx_class);
-	mlx_key_hook(mlx_class.win, handle_key, &mlx_class);
-	mlx_hook(mlx_class.win, 17, 0, mouse_handle, &mlx_class);
-	mlx_loop(mlx_class.mlx);
+	envGame->mlx.win = mlx_new_window(envGame->mlx.mlx, win_w, win_h, "SoLong");
+	initialize_sprites(&envGame->mlx);
+	put_map(&envGame->game, &envGame->mlx);
+	mlx_key_hook(envGame->mlx.win, handle_key, &envGame->mlx);
+	mlx_hook(envGame->mlx.win, 17, 0, mouse_handle, &envGame->mlx);
+	mlx_loop(envGame->mlx.mlx);
 }
 
 void	close_game(char **map, int error_code)
@@ -94,4 +93,3 @@ void	close_game(char **map, int error_code)
 	if (error_code > -1)
 		exit(error_handling(error_code));
 }
-

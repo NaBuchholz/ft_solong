@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/03/17 17:38:30 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/19 13:58:02 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = src/error_handling.c \
 	  src/get_next_line/get_next_line.c \
 	  src/free_map.c \
 	  src/validate_map.c \
-	  src/utils.c \
+	  src/player.c \
 	  src/so_long.c
 OBJ = ${SRC:.c=.o}
 SUB_DIRS = libft minilibx
