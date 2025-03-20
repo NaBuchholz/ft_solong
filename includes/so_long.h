@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 15:36:49 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:20:53 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*gnl_strjoin(const char *prefix, const char *suffix);
 void	*gnl_calloc(size_t nmemb, size_t size);
 char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
-void	close_game(char **map, int error_code);
+void	close_game(t_env *envGame, int error_code);
 int		is_rectangle(t_game game);
 void	free_map(char **map);
 void	put_map(t_game *game, t_classMlx *mlx);

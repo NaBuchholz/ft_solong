@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 14:38:38 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:12:50 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	valid_map(t_env *envGame)
 {
 	if (!envGame->game.map)
-		close_game(envGame->game.map, 2);
+		close_game(envGame, 2);
 	if (is_rectangle(envGame->game))
-		close_game(envGame->game.map, 2);
+		close_game(envGame, 2);
 	if (valid_chars(&envGame->game, &envGame->valid))
-		close_game(envGame->game.map, 5);
+		close_game(envGame, 5);
 }
 
 int	validate_file_name(char *name)

@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 15:59:56 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:02:30 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,4 @@ void	open_screen(t_env *envGame)
 	mlx_key_hook(envGame->mlx.win, handle_key, envGame);
 	mlx_hook(envGame->mlx.win, 17, 0, mouse_handle, &envGame->mlx);
 	mlx_loop(envGame->mlx.mlx);
-}
-
-void	close_game(char **map, int error_code)
-{
-	if (map)
-		free_map(map);
-	if (error_code > -1)
-		exit(error_handling(error_code));
 }
