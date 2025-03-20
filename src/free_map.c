@@ -6,66 +6,64 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 16:20:18 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:05:25 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+static void	free_resource(void *mlx, void **resource)
+{
+	if (*resource)
+	{
+		mlx_destroy_image(mlx, *resource);
+		*resource = NULL;
+	}
+}
+
 void	free_map(char **map)
 {
 	int	i;
 
-	if (map)
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
 	{
-		i = 0;
-		while (map[i])
-		{
-			free(map[i]);
-			i++;
-		}
-		free(map);
-		map = NULL;
+		free(map[i]);
+		i++;
 	}
+	free(map);
 }
 
 void	free_sprites(t_classMlx *mlx)
 {
-	if (mlx->wall)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->wall);
-		mlx->wall = NULL;
-	}
-	if (mlx->bg)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->bg);
-		mlx->bg = NULL;
-	}
-	if (mlx->char_still)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->char_still);
-		mlx->char_still = NULL;
-	}
-	if (mlx->collectables)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->collectables);
-		mlx->collectables = NULL;
-	}
-	if (mlx->exit)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->exit);
-		mlx->exit = NULL;
-	}
+	if (!mlx || !mlx->mlx)
+		return ;
+	free_resource(mlx->mlx, (void **)&mlx->wall);
+	free_resource(mlx->mlx, (void **)&mlx->bg);
+	free_resource(mlx->mlx, (void **)&mlx->char_still);
+	free_resource(mlx->mlx, (void **)&mlx->collectables);
+	free_resource(mlx->mlx, (void **)&mlx->exit);
 }
 
- static void	free_game_resources(t_env *envGame)
+static void	free_game_resources(t_env *envGame)
 {
+	if (!envGame)
+		return ;
 	free_sprites(&envGame->mlx);
 	if (envGame->game.map)
+	{
 		free_map(envGame->game.map);
+		envGame->game.map = NULL;
+	}
+
 	if (envGame->valid.visited_map)
+	{
 		free_map(envGame->valid.visited_map);
-	if (envGame->mlx.win)
+		envGame->valid.visited_map = NULL;
+	}
+	if (envGame->mlx.win && envGame->mlx.mlx)
 	{
 		mlx_destroy_window(envGame->mlx.mlx, envGame->mlx.win);
 		envGame->mlx.win = NULL;

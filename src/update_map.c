@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:50:08 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 16:28:48 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:47:31 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	update_map(t_env *envGame, int new_x, int new_y)
 
 void	move_player(t_env *envGame, int new_x, int new_y)
 {
-	if (new_x >= 0 && new_x < envGame->game.map_w &&
-		new_y >= 0 && new_y < envGame->game.map_h)
-	{
+	if (new_x >= 0 && new_x < envGame->game.map_w
+		&& new_y >= 0 && new_y < envGame->game.map_h)
 		update_map(envGame, new_x, new_y);
-	}
 }

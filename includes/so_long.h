@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 16:20:53 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:45:40 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	valid_map(t_env *envGame);
 void	update_map(t_env *envGame, int new_x, int new_y);
 void	open_screen(t_env *envGame);
 int		handle_key(int keycode, t_env *envGame);
-int		mouse_handle(t_classMlx *mlx);
+int		mouse_handle(t_env *envGame);
 
 #endif // SO_LONG
 
