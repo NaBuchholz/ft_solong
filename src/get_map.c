@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 13:58:39 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:49:44 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	**load_map(t_env *envGame)
 {
 	char	*line;
 	int		i;
-
 
 	if (envGame->fd < 0 || !allocate_map_memory(envGame))
 		return (NULL);

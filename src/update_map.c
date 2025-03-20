@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:50:08 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 15:39:50 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:48:42 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	check_collectible(t_env *envGame, int new_x, int new_y)
 	if (envGame->game.map[new_y][new_x] == 'C'
 		&& envGame->valid.qnt_collectables > 0)
 	{
-		envGame->valid.qnt_collectables-= 1;
+		envGame->valid.qnt_collectables -= 1;
 		ft_printf("Collectible picked up! Remaining: %d\n",
 			envGame->valid.qnt_collectables);
 	}
