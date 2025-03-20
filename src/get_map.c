@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 12:53:26 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:58:39 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ static int	allocate_map_memory(t_env *envGame)
 
 static void	find_player_position(t_env *envGame, char *line, int i)
 {
-    int	j;
+	int	j;
 
-    j = 0;
-    while (line[j])
-    {
-        if (line[j] == 'P')
-        {
-            envGame->game.player_x = j;
-            envGame->game.player_y = i;
-        }
-        j++;
-    }
+	j = 0;
+	while (line[j])
+	{
+		if (line[j] == 'P')
+		{
+			envGame->game.player_x = j;
+			envGame->game.player_y = i;
+		}
+		j++;
+	}
 }
 
 char	**load_map(t_env *envGame)

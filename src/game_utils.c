@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 12:58:46 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:36:40 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	open_screen(t_env *envGame)
 	ft_printf("Mapa redesenhado:\n");
 	for (int y = 0; y < envGame->game.map_h; y++)
 		ft_printf("%s\n", envGame->game.map[y]);
-	mlx_key_hook(envGame->mlx.win, handle_key, &envGame->mlx);
+	mlx_key_hook(envGame->mlx.win, handle_key, envGame);
 	mlx_hook(envGame->mlx.win, 17, 0, mouse_handle, &envGame->mlx);
 	mlx_loop(envGame->mlx.mlx);
 }

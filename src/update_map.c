@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:50:08 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 12:57:57 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:42:02 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	update_map(t_env *envGame, int new_x, int new_y)
 {
-	if (new_x < 0 || new_x >= envGame->game.map_w || new_y < 0
-		|| new_y >= envGame->game.map_h)
-		return ;
 	if (envGame->game.map[new_y][new_x] != '1')
 	{
-		ft_printf("Atualizando mapa para nova posição: X:%d, Y:%d\n", new_x, new_y);
+		ft_printf("-------------\nAtualizando mapa para nova posição: X:%d, Y:%d\n", new_x, new_y);
 		ft_printf("Mapa antes da atualização:\n");
 		for (int y = 0; y < envGame->game.map_h; y++)
 			ft_printf("%s\n", envGame->game.map[y]);
-
 		envGame->game.map[envGame->game.player_y][envGame->game.player_x] = '0';
 		envGame->game.map[new_y][new_x] = 'P';
 		envGame->game.player_x = new_x;

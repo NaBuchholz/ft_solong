@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/19 13:33:15 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:38:07 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ int	verify_elements(t_valid_check *check)
 	return (0);
 }
 
-int	valid_chars(t_game game, t_valid_check *check)
+int	valid_chars(t_game *game, t_valid_check *check)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	while (y < game.map_h)
+	while (y < game->map_h)
 	{
 		x = 0;
-		while (x < game.map_w - 1)
+		while (x < game->map_w - 1)
 		{
-			if (!is_valid_char(game.map[y][x], check))
+			if (!is_valid_char(game->map[y][x], check))
 				return (1);
-			if (game.map[y][x] == 'P' && check->qnt_player == 1)
+			if (game->map[y][x] == 'P' && check->qnt_player == 1)
 			{
-				game.player_x = x;
-				game.player_y = y;
+				game->player_x = x;
+				game->player_y = y;
 			}
 			x++;
 		}
