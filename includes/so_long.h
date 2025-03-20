@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 14:34:58 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:36:49 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 typedef struct s_valid_check
 {
 	size_t	first_line_len;
-	size_t	qnt_player;
-	size_t	qnt_collectables;
-	size_t	qnt_exit;
+	int		qnt_player;
+	int		qnt_collectables;
+	int		qnt_exit;
 	char	**visited_map;
 }	t_valid_check;
 
