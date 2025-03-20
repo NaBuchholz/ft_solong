@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/03/19 13:58:02 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/20 12:50:55 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC = src/error_handling.c \
 	  src/utils_validation_map.c \
 	  src/game_utils.c \
 	  src/get_map.c \
+	  src/update_map.c \
 	  src/get_next_line/get_next_line_utils.c \
 	  src/get_next_line/get_next_line.c \
 	  src/free_map.c \

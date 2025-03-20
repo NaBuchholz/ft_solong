@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/19 15:20:57 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:56:35 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ static int	initialize_game(char *file_name, t_env *envGame)
 	envGame->game.map = load_map(envGame);
 	close(envGame->fd);
 	envGame->fd = 0;
+	ft_printf("Mapa carregado:\n");
+	for (int y = 0; y < envGame->game.map_h; y++)
+		ft_printf("%s\n", envGame->game.map[y]);
+	ft_printf("Posição inicial do jogador: X:%d, Y:%d\n", envGame->game.player_x, envGame->game.player_y);
 	return (1);
 }
 
@@ -64,20 +68,4 @@ int	main(int argc, char **argv)
 	open_screen(&envGame);
 	write(1, "Rodando OK - VAMBORA!\n", 23);
 	return (0);
-}
-
-void	free_game_resources(t_env *env)
-{
-	if (env->mlx.win)
-	{
-		mlx_destroy_window(env->mlx.mlx, env->mlx.win);
-		env->mlx.win = NULL;
-	}
-	if (env->game.map)
-		free_map(env->game.map);
-	if (env->mlx.mlx)
-	{
-		free(env->mlx.mlx);
-		env->mlx.mlx = NULL;
-	}
 }
