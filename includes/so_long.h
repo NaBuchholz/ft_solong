@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 16:19:50 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:41:13 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		validate_file_name(char *name);
 int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game *game, t_valid_check *check);
 char	**load_map(t_env *envGame);
+void	load_copy(t_env *envGame);
 int		error_handling(int error_code);
 void	valid_map(t_env *envGame);
 void	update_map(t_env *envGame, int new_x, int new_y);
