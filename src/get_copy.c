@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 16:56:12 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:55:25 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,16 @@ void	load_copy(t_env *envGame)
 	char	*line;
 	int		i;
 
+	ft_printf("Entra no load\n");
 	if (!allocate_map_memory(envGame))
-	{
-		ft_printf("erro alocação na cópia");
 		return ;
-	}
 	i = 0;
-	while (1)
+	while (i < envGame->game.map_h)
 	{
 		line = ft_strdup(envGame->game.map[i]);
 		if (!line)
 			break ;
 		envGame->valid.map_cp[i++] = line;
-		free(line);
 	}
 	envGame->valid.map_cp[i] = NULL;
 	if (is_map_empty(envGame->valid.map_cp))
