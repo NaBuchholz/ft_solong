@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 14:34:02 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:22:58 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_counters(t_env *envGame)
 	envGame->valid.qnt_collectables = 0;
 	envGame->valid.qnt_exit = 0;
 	envGame->valid.first_line_len = 0;
-	envGame->valid.visited_map = NULL;
+	envGame->valid.map_cp = NULL;
 }
 
 static int	initialize_game(char *file_name, t_env *envGame)
@@ -46,8 +46,10 @@ static int	initialize_game(char *file_name, t_env *envGame)
 		return (0);
 	}
 	envGame->game.map = load_map(envGame);
+	envGame->valid.map_cp = malloc(sizeof(char *) * (envGame->game.map_h + 1));
+	envGame->valid.map_cp = envGame->game.map;
 	close(envGame->fd);
-	if (!envGame->game.map)
+	if (!envGame->game.map || !envGame->valid.map_cp)
 	{
 		ft_printf("Error: Map not loaded.\n");
 		return (close_game(envGame, 1), 0);

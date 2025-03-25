@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 14:40:28 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:19:50 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,20 @@ int	valid_chars(t_game *game, t_valid_check *check)
 	return (verify_elements(check));
 }
 
-int	flood_fill(t_game *game, int x, int y, char **visited)
+int	flood_fill(t_env *env, int x, int y)
 {
-	if (x < 0 || x >= game->map_w || y < 0 || y >= game->map_h)
+	if (x < 0 || x >= env->game.map_w || y < 0 || y >= env->game.map_h)
 		return (1);
-	if (game->map[y][x] == 'E')
+	if (env->valid.map_cp[y][x] == 'E'
+		|| env->valid.map_cp[y][x] == '1')
 		return (1);
-	if (flood_fill(game, x + 1, y, visited)
-		|| flood_fill(game, x - 1, y, visited)
-		|| flood_fill(game, x, y + 1, visited)
-		|| flood_fill(game, x, y - 1, visited))
+	if (env->valid.map_cp[y][x] == '0'
+		|| env->valid.map_cp[y][x] == 'C')
+		env->valid.map_cp[y][x] = 'V';
+	if (flood_fill(env, x + 1, y)
+		|| flood_fill(env, x - 1, y)
+		|| flood_fill(env, x, y + 1)
+		|| flood_fill(env, x, y - 1))
 		return (1);
 	return (0);
 }

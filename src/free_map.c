@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 14:33:20 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:19:50 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	free_map(char **map)
 		free(map[i]);
 		i++;
 	}
-	free(map);
 }
 
 void	free_sprites(t_classMlx *mlx)
@@ -57,10 +56,10 @@ static void	free_game_resources(t_env *envGame)
 		free_map(envGame->game.map);
 		envGame->game.map = NULL;
 	}
-	if (envGame->valid.visited_map)
+	if (envGame->valid.map_cp)
 	{
-		free_map(envGame->valid.visited_map);
-		envGame->valid.visited_map = NULL;
+		free_map(envGame->valid.map_cp);
+		envGame->valid.map_cp = NULL;
 	}
 	if (envGame->mlx.win && envGame->mlx.mlx)
 	{
