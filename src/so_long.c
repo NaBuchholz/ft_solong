@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 17:14:22 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:34:02 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_counters(t_env *envGame)
 	envGame->valid.qnt_collectables = 0;
 	envGame->valid.qnt_exit = 0;
 	envGame->valid.first_line_len = 0;
+	envGame->valid.visited_map = NULL;
 }
 
 static int	initialize_game(char *file_name, t_env *envGame)

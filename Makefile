@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/03/20 16:38:38 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/25 13:07:47 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,11 +67,11 @@ fclean: clean
 	${RM} ${NAME}
 	@$(MAKE) -C libft fclean
 
-debug_val: ${NAME}
+debug: ${NAME}
 	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./${NAME} ./maps/control.ber
 
-debug_gdb: ${NAME}
-	@gdb ./${NAME}
+run: ${NAME}
+	@valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all --vgdb-error=0 ./${NAME} ./maps/control.ber
 
 re: fclean all
 

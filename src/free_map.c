@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 17:05:25 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:33:20 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	free_game_resources(t_env *envGame)
 		free_map(envGame->game.map);
 		envGame->game.map = NULL;
 	}
-
 	if (envGame->valid.visited_map)
 	{
 		free_map(envGame->valid.visited_map);
