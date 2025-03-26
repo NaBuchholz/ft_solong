@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/03/25 16:43:27 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/03/26 11:42:52 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,9 +71,9 @@ fclean: clean
 debug: ${NAME}
 	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./${NAME} ./maps/control.ber
 
-run: ${NAME}
+gdb: ${NAME}
 	@valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all --vgdb-error=0 ./${NAME} ./maps/control.ber
 
 re: fclean all
 
-.PHONY: all clean fclean re init-submodules debug
+.PHONY: all clean fclean re init-submodules debug gdb
