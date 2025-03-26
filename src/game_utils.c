@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/20 17:14:35 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:38:46 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	initialize_sprites(t_classMlx *mlx)
 	char_still = "./assets/player_still.xpm";
 	collectables = "./assets/collectible.xpm";
 	exit = "./assets/exit.xpm";
-	wall = "./assets/bg.xpm";
+	wall = "./assets/wall.xpm";
 	mlx->bg = mlx_xpm_file_to_image(mlx->mlx, bg, &px, &px);
 	mlx->char_still = mlx_xpm_file_to_image(mlx->mlx, char_still, &px, &px);
 	mlx->collectables = mlx_xpm_file_to_image(mlx->mlx, collectables, &px, &px);
@@ -53,7 +53,7 @@ void	put_map(t_game *game, t_classMlx *mlx)
 			if (game->map[y][x] == '0')
 				put_image(mlx, mlx->bg, x, y);
 			else if (game->map[y][x] == '1')
-				put_image(mlx, mlx->bg, x, y);
+				put_image(mlx, mlx->wall, x, y);
 			else if (game->map[y][x] == 'P')
 				put_image(mlx, mlx->char_still, x, y);
 			else if (game->map[y][x] == 'E')

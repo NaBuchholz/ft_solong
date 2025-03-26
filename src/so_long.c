@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 16:52:53 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:40:35 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_counters(t_env *envGame)
 	envGame->mlx.collectables = NULL;
 	envGame->mlx.exit = NULL;
 	envGame->mlx.char_still = NULL;
+	envGame->mlx.wall = NULL;
 	envGame->mlx.wall = NULL;
 	envGame->mlx.win = NULL;
 	envGame->mlx.mlx = NULL;
