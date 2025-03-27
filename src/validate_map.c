@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 16:04:34 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:11:59 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	valid_map(t_env *envGame)
 		close_game(envGame, 2);
 	if (valid_chars(&envGame->game, &envGame->valid))
 		close_game(envGame, 5);
-	if (flood_fill(envGame, envGame->game.player_x, envGame->game.player_y))
+	if (!flood_fill(envGame, envGame->game.player_x, envGame->game.player_y))
 		close_game(envGame, 9);
 
 }

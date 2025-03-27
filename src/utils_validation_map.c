@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 18:48:35 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:07:03 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,11 @@ int	valid_chars(t_game *game, t_valid_check *check)
 
 int	flood_fill(t_env *env, int x, int y)
 {
-	int copy_collectbles;
+	static int copy_collectbles;
+	static int	exit_found;
 
-	copy_collectbles = env->valid.qnt_collectables;
+	if (!copy_collectbles)
+		copy_collectbles = env->valid.qnt_collectables + 1;
 	if (x < 0 || x >= env->game.map_w || y < 0 || y >= env->game.map_h)
 		return (0); // Fora dos limites do mapa
 	if (env->valid.map_cp[y][x] == '1' || env->valid.map_cp[y][x] == 'V')
@@ -93,12 +95,9 @@ int	flood_fill(t_env *env, int x, int y)
 	if (env->valid.map_cp[y][x] == 'C')
 		copy_collectbles--; // Colecionável encontrado
 	if (env->valid.map_cp[y][x] == 'E')
-	{
-		if (copy_collectbles == 0)
-			return (1); // Saída encontrada e todos os colecionáveis foram coletados
-		else
-			return (0); // Saída encontrada, mas ainda há colecionáveis
-	}
+		exit_found = 1;
+	if (copy_collectbles == 1 && exit_found == 1)
+		return (1);
 	env->valid.map_cp[y][x] = 'V'; // Marca como visitado
 	// Continua a busca nas quatro direções
 	if (flood_fill(env, x + 1, y)
