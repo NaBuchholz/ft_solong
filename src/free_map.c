@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:28:24 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,32 @@ static void	free_sprites(t_classMlx *mlx)
 	free_resource(mlx->mlx, (void **)&mlx->exit);
 }
 
-static void	free_game_resources(t_env *envGame)
+static void	free_game_resources(t_env *envgame)
 {
-	if (!envGame)
+	if (!envgame)
 		return ;
-	free_sprites(&envGame->mlx);
-	if (envGame->game.map)
+	free_sprites(&envgame->mlx);
+	if (envgame->game.map)
 	{
-		free_map(envGame->game.map);
-		envGame->game.map = NULL;
+		free_map(envgame->game.map);
+		envgame->game.map = NULL;
 	}
-	if (envGame->valid.map_cp)
+	if (envgame->valid.map_cp)
 	{
-		free_map(envGame->valid.map_cp);
-		envGame->valid.map_cp = NULL;
+		free_map(envgame->valid.map_cp);
+		envgame->valid.map_cp = NULL;
 	}
-	if (envGame->mlx.mlx)
+	if (envgame->mlx.mlx)
 	{
-		mlx_destroy_display(envGame->mlx.mlx);
-		free(envGame->mlx.mlx);
-		envGame->mlx.mlx = NULL;
+		mlx_destroy_display(envgame->mlx.mlx);
+		free(envgame->mlx.mlx);
+		envgame->mlx.mlx = NULL;
 	}
 }
 
-void	close_game(t_env *envGame, int error_code)
+void	close_game(t_env *envgame, int error_code)
 {
-	free_game_resources(envGame);
+	free_game_resources(envgame);
 	if (error_code > -1)
 		exit(1);
 	else

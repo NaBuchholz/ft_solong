@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 11:44:25 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*gnl_strjoin(const char *prefix, const char *suffix);
 void	*gnl_calloc(size_t nmemb, size_t size);
 char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
-void	close_game(t_env *envGame, int error_code);
+void	close_game(t_env *envgame, int error_code);
 int		is_rectangle(t_game game);
 int		flood_fill(t_env *env, int x, int y);
 void	free_map(char **map);
@@ -77,14 +77,14 @@ void	put_map(t_game *game, t_classMlx *mlx);
 int		validate_file_name(char *name);
 int		verify_elements(t_valid_check *check);
 int		valid_chars(t_game *game, t_valid_check *check);
-char	**load_map(t_env *envGame);
-void	load_copy(t_env *envGame);
+char	**load_map(t_env *envgame);
+void	load_copy(t_env *envgame);
 int		error_handling(int error_code);
-void	valid_map(t_env *envGame);
-void	update_map(t_env *envGame, int new_x, int new_y);
-void	open_screen(t_env *envGame);
-int		handle_key(int keycode, t_env *envGame);
-int		mouse_handle(t_env *envGame);
+void	valid_map(t_env *envgame);
+void	update_map(t_env *envgame, int new_x, int new_y);
+void	open_screen(t_env *envgame);
+int		handle_key(int keycode, t_env *envgame);
+int		mouse_handle(t_env *envgame);
 
 #endif // SO_LONG
 

@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:26:28 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ static int	exceeds_expected_lines(int current_line, int expected_lines)
 	return (0);
 }
 
-static int	allocate_map_memory(t_env *envGame)
+static int	allocate_map_memory(t_env *envgame)
 {
-	envGame->game.map = malloc(sizeof(char *) * (envGame->game.map_h + 1));
-	if (!envGame->game.map)
+	envgame->game.map = malloc(sizeof(char *) * (envgame->game.map_h + 1));
+	if (!envgame->game.map)
 	{
 		ft_printf("Memory allocation failed for copy map\n");
-		envGame->game.map = NULL;
+		envgame->game.map = NULL;
 		return (0);
 	}
 	return (1);
 }
 
-static void	find_player_position(t_env *envGame, char *line, int i)
+static void	find_player_position(t_env *envgame, char *line, int i)
 {
 	int	j;
 
@@ -53,36 +53,36 @@ static void	find_player_position(t_env *envGame, char *line, int i)
 	{
 		if (line[j] == 'P')
 		{
-			envGame->game.player_x = j;
-			envGame->game.player_y = i;
+			envgame->game.player_x = j;
+			envgame->game.player_y = i;
 		}
 		j++;
 	}
 }
 
-char	**load_map(t_env *envGame)
+char	**load_map(t_env *envgame)
 {
 	char	*line;
 	int		i;
 
-	if (envGame->fd < 0 || !allocate_map_memory(envGame))
+	if (envgame->fd < 0 || !allocate_map_memory(envgame))
 		return (NULL);
 	i = 0;
 	while (1)
 	{
-		line = get_next_line(envGame->fd);
+		line = get_next_line(envgame->fd);
 		if (!line)
 			break ;
-		if (exceeds_expected_lines(i, envGame->game.map_h))
+		if (exceeds_expected_lines(i, envgame->game.map_h))
 			return (free(line), NULL);
-		envGame->game.map[i] = line;
-		find_player_position(envGame, line, i++);
+		envgame->game.map[i] = line;
+		find_player_position(envgame, line, i++);
 	}
-	envGame->game.map[i] = NULL;
-	if (is_map_empty(envGame->game.map))
+	envgame->game.map[i] = NULL;
+	if (is_map_empty(envgame->game.map))
 		return (NULL);
-	envGame->game.map_w = (int)ft_strlen(envGame->game.map[0]);
-	if (envGame->game.map[0][envGame->game.map_w - 1] == '\n')
-		envGame->game.map_w -= 1;
-	return (envGame->game.map);
+	envgame->game.map_w = (int)ft_strlen(envgame->game.map[0]);
+	if (envgame->game.map[0][envgame->game.map_w - 1] == '\n')
+		envgame->game.map_w -= 1;
+	return (envgame->game.map);
 }

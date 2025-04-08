@@ -6,22 +6,22 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 10:42:14 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	valid_map(t_env *envGame)
+void	valid_map(t_env *envgame)
 {
-	if (!envGame->game.map)
-		close_game(envGame, 2);
-	if (is_rectangle(envGame->game))
-		close_game(envGame, 2);
-	if (valid_chars(&envGame->game, &envGame->valid))
-		close_game(envGame, 5);
-	if (!flood_fill(envGame, envGame->game.player_x, envGame->game.player_y))
-		close_game(envGame, 9);
+	if (!envgame->game.map)
+		close_game(envgame, 2);
+	if (is_rectangle(envgame->game))
+		close_game(envgame, 2);
+	if (valid_chars(&envgame->game, &envgame->valid))
+		close_game(envgame, 5);
+	if (!flood_fill(envgame, envgame->game.player_x, envgame->game.player_y))
+		close_game(envgame, 9);
 }
 
 int	validate_file_name(char *name)

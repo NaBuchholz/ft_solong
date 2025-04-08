@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 09:55:48 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,30 @@ static int	is_map_empty(char **map)
 	return (0);
 }
 
-static int	allocate_map_memory(t_env *envGame)
+static int	allocate_map_memory(t_env *envgame)
 {
-	envGame->valid.map_cp = malloc(sizeof(char *) * (envGame->game.map_h + 1));
-	if (!envGame->valid.map_cp)
+	envgame->valid.map_cp = malloc(sizeof(char *) * (envgame->game.map_h + 1));
+	if (!envgame->valid.map_cp)
 		return (0);
 	return (1);
 }
 
-void	load_copy(t_env *envGame)
+void	load_copy(t_env *envgame)
 {
 	char	*line;
 	int		i;
 
-	if (!allocate_map_memory(envGame))
+	if (!allocate_map_memory(envgame))
 		return ;
 	i = 0;
-	while (i < envGame->game.map_h)
+	while (i < envgame->game.map_h)
 	{
-		line = ft_strdup(envGame->game.map[i]);
+		line = ft_strdup(envgame->game.map[i]);
 		if (!line)
 			break ;
-		envGame->valid.map_cp[i++] = line;
+		envgame->valid.map_cp[i++] = line;
 	}
-	envGame->valid.map_cp[i] = NULL;
-	if (is_map_empty(envGame->valid.map_cp))
+	envgame->valid.map_cp[i] = NULL;
+	if (is_map_empty(envgame->valid.map_cp))
 		return ;
 }

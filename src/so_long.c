@@ -6,69 +6,69 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/26 12:40:35 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init_counters(t_env *envGame)
+void	init_counters(t_env *envgame)
 {
-	envGame->game.map_h = 0;
-	envGame->game.map_w = 0;
-	envGame->game.player_x = 0;
-	envGame->game.player_y = 0;
-	envGame->game.moves = 0;
-	envGame->game.map = NULL;
-	envGame->mlx.collectables = NULL;
-	envGame->mlx.exit = NULL;
-	envGame->mlx.char_still = NULL;
-	envGame->mlx.wall = NULL;
-	envGame->mlx.wall = NULL;
-	envGame->mlx.win = NULL;
-	envGame->mlx.mlx = NULL;
-	envGame->mlx.bg = NULL;
-	envGame->valid.qnt_player = 0;
-	envGame->valid.qnt_collectables = 0;
-	envGame->valid.qnt_exit = 0;
-	envGame->valid.first_line_len = 0;
-	envGame->valid.map_cp = NULL;
+	envgame->game.map_h = 0;
+	envgame->game.map_w = 0;
+	envgame->game.player_x = 0;
+	envgame->game.player_y = 0;
+	envgame->game.moves = 0;
+	envgame->game.map = NULL;
+	envgame->mlx.collectables = NULL;
+	envgame->mlx.exit = NULL;
+	envgame->mlx.char_still = NULL;
+	envgame->mlx.wall = NULL;
+	envgame->mlx.wall = NULL;
+	envgame->mlx.win = NULL;
+	envgame->mlx.mlx = NULL;
+	envgame->mlx.bg = NULL;
+	envgame->valid.qnt_player = 0;
+	envgame->valid.qnt_collectables = 0;
+	envgame->valid.qnt_exit = 0;
+	envgame->valid.first_line_len = 0;
+	envgame->valid.map_cp = NULL;
 }
 
-static int	initialize_game(char *file_name, t_env *envGame)
+static int	initialize_game(char *file_name, t_env *envgame)
 {
-	init_counters(envGame);
-	envGame->fd = open(file_name, O_RDONLY);
-	envGame->game.map_h = count_lines(envGame->fd);
-	envGame->fd = open(file_name, O_RDONLY);
-	if (envGame->fd < 0)
+	init_counters(envgame);
+	envgame->fd = open(file_name, O_RDONLY);
+	envgame->game.map_h = count_lines(envgame->fd);
+	envgame->fd = open(file_name, O_RDONLY);
+	if (envgame->fd < 0)
 	{
 		ft_printf("Error: Failed to reopen file.\n");
 		return (0);
 	}
-	envGame->game.map = load_map(envGame);
-	close(envGame->fd);
-	load_copy(envGame);
-	if (!envGame->game.map || !envGame->valid.map_cp)
+	envgame->game.map = load_map(envgame);
+	close(envgame->fd);
+	load_copy(envgame);
+	if (!envgame->game.map || !envgame->valid.map_cp)
 	{
 		ft_printf("Error: Map not loaded.\n");
-		return (close_game(envGame, 1), 0);
+		return (close_game(envgame, 1), 0);
 	}
-	envGame->fd = 0;
+	envgame->fd = 0;
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_env	envGame;
+	t_env	envgame;
 
 	if (argc != 2 || argv == NULL)
 		return (ft_putendl_fd_1("use \"./so_long map.ber \"", 2));
 	if (!validate_file_name(argv[1]))
 		return (ft_putendl_fd_1("The scroll lacks the '.ber' rune.", 2));
-	if (!initialize_game(argv[1], &envGame))
+	if (!initialize_game(argv[1], &envgame))
 		return (1);
-	valid_map(&envGame);
-	open_screen(&envGame);
+	valid_map(&envgame);
+	open_screen(&envgame);
 	return (0);
 }
