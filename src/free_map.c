@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 16:51:18 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:19:26 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ void	close_game(t_env *envgame, int error_code)
 {
 	free_game_resources(envgame);
 	if (error_code > -1)
+	{
+		error_handling(error_code);
 		exit(1);
+	}
 	else
 		exit(0);
 }

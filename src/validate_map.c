@@ -6,11 +6,66 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:30:15 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static int	is_surrounded_by_walls(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < game->map_w)
+	{
+		if (game->map[0][x] != '1' || game->map[game->map_h - 1][x] != '1')
+			return (0);
+		x++;
+	}
+	y = 0;
+	while (y < game->map_h)
+	{
+		if (game->map[y][0] != '1' || game->map[y][game->map_w - 1] != '1')
+			return (0);
+		y++;
+	}
+	return (1);
+}
+
+static int	is_rectangle(t_game game)
+{
+	int	x;
+
+	if (game.map_h == game.map_w)
+		return (1);
+	x = 0;
+	while (x < game.map_h)
+	{
+		if ((int)ft_strlen(game.map[x]) - 1 != game.map_w)
+			return (1);
+		x++;
+	}
+	return (0);
+}
+
+static int	is_map_too_large(t_env *envgame)
+{
+	int	max_width;
+	int	max_height;
+	int	map_pixel_width;
+	int	map_pixel_height;
+
+	max_width = 1366;
+	max_height = 768;
+	map_pixel_width = envgame->game.map_w * 32;
+	map_pixel_height = envgame->game.map_h * 32;
+	if (map_pixel_width > max_width - 100
+		|| map_pixel_height > max_height - 100)
+		return (1);
+	return (0);
+}
 
 void	valid_map(t_env *envgame)
 {
@@ -18,10 +73,14 @@ void	valid_map(t_env *envgame)
 		close_game(envgame, 2);
 	if (is_rectangle(envgame->game))
 		close_game(envgame, 2);
+	if (!is_surrounded_by_walls(&envgame->game))
+		close_game(envgame, 7);
 	if (valid_chars(&envgame->game, &envgame->valid))
 		close_game(envgame, 5);
 	if (!flood_fill(envgame, envgame->game.player_x, envgame->game.player_y))
 		close_game(envgame, 9);
+	if (is_map_too_large(envgame))
+		close_game(envgame, 4);
 }
 
 int	validate_file_name(char *name)
@@ -38,18 +97,3 @@ int	validate_file_name(char *name)
 	return (1);
 }
 
-int	is_rectangle(t_game game)
-{
-	int	x;
-
-	if (game.map_h == game.map_w)
-		return (1);
-	x = 0;
-	while (x < game.map_h)
-	{
-		if ((int)ft_strlen(game.map[x]) - 1 != game.map_w)
-			return (1);
-		x++;
-	}
-	return (0);
-}
