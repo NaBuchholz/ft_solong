@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 18:55:25 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/07 21:29:11 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	load_copy(t_env *envGame)
 	char	*line;
 	int		i;
 
-	ft_printf("Entra no load\n");
 	if (!allocate_map_memory(envGame))
 		return ;
 	i = 0;
