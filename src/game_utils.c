@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:13:09 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	open_screen(t_env *envgame)
 
 	envgame->mlx.mlx = mlx_init();
 	if (envgame->mlx.mlx == NULL)
-		close_game(envgame, 0);
+		close_game(envgame, 0, "The mlx pointer is NULL");
 	win_w = envgame->game.map_w * 32;
 	win_h = envgame->game.map_h * 32;
 	if (win_h < 1 || win_w < 1)
-		close_game(envgame, 0);
+		close_game(envgame, 0, "Windown dimension cannot be < 1");
 	envgame->mlx.win = mlx_new_window(envgame->mlx.mlx, win_w, win_h, "SoLong");
 	if (!envgame->mlx.win)
-		close_game(envgame, 0);
+		close_game(envgame, 0, "No mlx windown found");
 	initialize_sprites(&envgame->mlx, &px);
 	put_map(&envgame->game, &envgame->mlx);
 	mlx_key_hook(envgame->mlx.win, handle_key, envgame);

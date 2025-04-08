@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 17:19:26 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:00 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,14 @@ static void	free_game_resources(t_env *envgame)
 	}
 }
 
-void	close_game(t_env *envgame, int error_code)
+void	close_game(t_env *envgame, int error_code, char *tech_msg)
 {
 	free_game_resources(envgame);
 	if (error_code > -1)
 	{
 		error_handling(error_code);
+		if (tech_msg)
+			ft_printf("Technical details: %s\n", tech_msg);
 		exit(1);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:18:17 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ static int	initialize_game(char *file_name, t_env *envgame)
 	close(envgame->fd);
 	load_copy(envgame);
 	if (!envgame->game.map || !envgame->valid.map_cp)
-	{
-		ft_printf("Error: Map not loaded.\n");
-		return (close_game(envgame, 1), 0);
-	}
+		return (close_game(envgame, 1, "Copy map not loaded"), 0);
 	envgame->fd = 0;
 	return (1);
 }

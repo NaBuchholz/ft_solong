@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 17:30:15 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:16:06 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ static int	is_map_too_large(t_env *envgame)
 void	valid_map(t_env *envgame)
 {
 	if (!envgame->game.map)
-		close_game(envgame, 2);
+		close_game(envgame, 2, "No game map found");
 	if (is_rectangle(envgame->game))
-		close_game(envgame, 2);
+		close_game(envgame, 2, "Not a rectangle");
 	if (!is_surrounded_by_walls(&envgame->game))
-		close_game(envgame, 7);
+		close_game(envgame, 7, "The map isen't surrounded by walls");
 	if (valid_chars(&envgame->game, &envgame->valid))
-		close_game(envgame, 5);
+		close_game(envgame, 5, "The map has invalid chars");
 	if (!flood_fill(envgame, envgame->game.player_x, envgame->game.player_y))
-		close_game(envgame, 9);
+		close_game(envgame, 9, "No valid path found");
 	if (is_map_too_large(envgame))
-		close_game(envgame, 4);
+		close_game(envgame, 4, "The map is too large");
 }
 
 int	validate_file_name(char *name)

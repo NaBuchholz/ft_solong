@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:50:08 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:18:51 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	can_exit(t_env *envgame, int new_x, int new_y)
 		if (envgame->valid.qnt_collectables == 0)
 		{
 			ft_printf("You won the game!\n");
-			close_game(envgame, -1);
+			close_game(envgame, -1, "");
 		}
 		else
 		{
