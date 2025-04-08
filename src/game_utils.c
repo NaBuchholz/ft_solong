@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/26 12:38:46 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:56:21 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ void	open_screen(t_env *envGame)
 
 	envGame->mlx.mlx = mlx_init();
 	if (envGame->mlx.mlx == NULL)
-		exit(error_handling(0));
+		close_game(envGame, 0);
 	win_w = envGame->game.map_w * 32;
 	win_h = envGame->game.map_h * 32;
 	if (win_h < 1 || win_w < 1)
-		exit(error_handling(5));
+		close_game(envGame, 0);
 	envGame->mlx.win = mlx_new_window(envGame->mlx.mlx, win_w, win_h, "SoLong");
 	if (!envGame->mlx.win)
-		exit(error_handling(6));
+		close_game(envGame, 0);
 	initialize_sprites(&envGame->mlx);
 	put_map(&envGame->game, &envGame->mlx);
 	mlx_key_hook(envGame->mlx.win, handle_key, envGame);
-	mlx_hook(envGame->mlx.win, 17, 0, mouse_handle, &envGame->mlx);
+	mlx_hook(envGame->mlx.win, 17, 0, mouse_handle, envGame);
 	mlx_loop(envGame->mlx.mlx);
 }

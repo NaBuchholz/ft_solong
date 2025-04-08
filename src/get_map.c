@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:36:32 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/03/25 16:20:14 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:26:28 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ static int	allocate_map_memory(t_env *envGame)
 {
 	envGame->game.map = malloc(sizeof(char *) * (envGame->game.map_h + 1));
 	if (!envGame->game.map)
+	{
+		ft_printf("Memory allocation failed for copy map\n");
+		envGame->game.map = NULL;
 		return (0);
+	}
 	return (1);
 }
 
