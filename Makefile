@@ -6,11 +6,11 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 12:09:52 by nbuchhol          #+#    #+#              #
-#    Updated: 2025/04/08 22:19:19 by nbuchhol         ###   ########.fr        #
+#    Updated: 2025/04/09 10:11:09 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = solong
+NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft -I./minilibx
 DEBUG_FLAGS = -g
