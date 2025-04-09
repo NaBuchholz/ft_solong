@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:05:29 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 18:13:09 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:59:09 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	open_screen(t_env *envgame)
 		close_game(envgame, 0, "No mlx windown found");
 	initialize_sprites(&envgame->mlx, &px);
 	put_map(&envgame->game, &envgame->mlx);
-	mlx_key_hook(envgame->mlx.win, handle_key, envgame);
+	mlx_hook(envgame->mlx.win, 2, 1L<<0, handle_key, envgame);
+	mlx_loop_hook(envgame->mlx.win, handle_key, NULL);
 	mlx_hook(envgame->mlx.win, 17, 0, mouse_handle, envgame);
 	mlx_loop(envgame->mlx.mlx);
 }
