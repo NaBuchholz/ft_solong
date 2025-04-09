@@ -1,10 +1,10 @@
 <p align="left"><h1 align="left">So Long - A 2D Game</h1></p>
 <p align="left">
-	<img src="https://img.shields.io/github/license/NaBuchholz/so_long?style=default&logo=opensourceinitiative&logoColor=white&color=0b96a2" alt="license">
-	<img src="https://img.shields.io/github/last-commit/NaBuchholz/so_long?style=default&logo=git&logoColor=white&color=0b96a2" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/NaBuchholz/so_long?style=default&color=0b96a2" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/NaBuchholz/so_long?style=default&color=0b96a2" alt="repo-language-count">
-	<img src="https://github.com/NaBuchholz/so_long/workflows/norminette/badge.svg" alt="repo-norminette">
+	<img src="https://img.shields.io/github/license/NaBuchholz/ft_solong?style=default&logo=opensourceinitiative&logoColor=white&color=0b96a2" alt="license">
+	<img src="https://img.shields.io/github/last-commit/NaBuchholz/ft_solong?style=default&logo=git&logoColor=white&color=0b96a2" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/top/NaBuchholz/ft_solong?style=default&color=0b96a2" alt="repo-top-language">
+	<img src="https://img.shields.io/github/languages/count/NaBuchholz/ft_solong?style=default&color=0b96a2" alt="repo-language-count">
+	<img src="https://github.com/NaBuchholz/ft_solong/workflows/norminette/badge.svg" alt="repo-norminette">
 </p>
 <p align="left"><!-- default option, no dependency badges. -->
 </p>
