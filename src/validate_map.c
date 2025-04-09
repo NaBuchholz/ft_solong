@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:58:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 18:16:06 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:48:40 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static int	is_surrounded_by_walls(t_game *game)
 static int	is_rectangle(t_game game)
 {
 	int	x;
+	int	expected_width;
 
-	if (game.map_h == game.map_w)
-		return (1);
+	expected_width = game.map_w;
 	x = 0;
 	while (x < game.map_h)
 	{
-		if ((int)ft_strlen(game.map[x]) - 1 != game.map_w)
+		if ((int)ft_strlen(game.map[x]) - 1 != expected_width)
 			return (1);
 		x++;
 	}
@@ -96,4 +96,3 @@ int	validate_file_name(char *name)
 		return (0);
 	return (1);
 }
-

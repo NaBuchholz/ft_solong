@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 00:45:00 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 18:19:21 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:18:17 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	handle_key(int keycode, t_env *envgame)
 int	mouse_handle(t_env *envgame)
 {
 	if (envgame->mlx.mlx && envgame->mlx.win)
-		close_game(envgame, 0, "");
+		close_game(envgame, -1, "");
 	return (0);
 }

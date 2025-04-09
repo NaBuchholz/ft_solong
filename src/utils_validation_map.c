@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:55:48 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/07 21:54:01 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:37:24 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	count_lines(int file)
 		line = get_next_line(file);
 	}
 	if (lines == 0)
-	{
-		ft_printf("No lines found in the file.\n");
 		return (-1);
-	}
 	close(file);
 	return (lines);
 }

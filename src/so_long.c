@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:12:47 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 18:18:17 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:37:29 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	initialize_game(char *file_name, t_env *envgame)
 	init_counters(envgame);
 	envgame->fd = open(file_name, O_RDONLY);
 	envgame->game.map_h = count_lines(envgame->fd);
+	if (envgame->game.map_h <= 0)
+		return (close_game(envgame, 13, "Map file empty"), 0);
 	envgame->fd = open(file_name, O_RDONLY);
 	if (envgame->fd < 0)
 	{
