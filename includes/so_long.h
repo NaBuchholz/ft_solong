@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:15:22 by nbuchhol          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:19 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:37:15 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_env
 	int				fd;
 }	t_env;
 
-
 int		count_lines(int file);
 char	*gnl_strchr(const char *s, int c);
 char	*gnl_strjoin(const char *prefix, const char *suffix);
@@ -86,4 +85,3 @@ int		handle_key(int keycode, t_env *envgame);
 int		mouse_handle(t_env *envgame);
 
 #endif // SO_LONG
-
